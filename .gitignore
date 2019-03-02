@@ -1,0 +1,8 @@
+env
+*.DS_Store
+*.pyc
+__pycache
+./.Python__
+env/bin                                                                                                                                                                                                     
+env/include
+env/lib
