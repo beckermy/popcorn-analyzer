@@ -16,7 +16,13 @@ short_pop_wave = wave.open('short_pops.wav','r')
 y, s = librosa.load('short_pops.wav', sr=100) # Downsample 44.1kHz to 8kHz
 #Extract Raw Audio from Wav File
 signal = short_pop_wave.readframes(-1)
-b, a = sig.butter(1, 0.09)
+
+
+
+
+
+
+b, a = sig.butter(1, 0.15)
 zi = sig.lfilter_zi(b, a)
 z, _ = sig.lfilter(b, a, y, zi=zi*y[0])
 z2, _ = sig.lfilter(b, a, z, zi=zi*z[0])
@@ -51,6 +57,8 @@ gradientArray = numpy.gradient(booleanArray)
 filteredArray = list(filter(lambda x: x > 0, gradientArray))
 print(len(filteredArray)/2)
 
+
+librosa.output.write_wav('low_pass.wav', low_y, s)
 
 plt.figure(0)
 plt.title('Librosa low pass')
